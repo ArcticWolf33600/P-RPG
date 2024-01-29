@@ -1,14 +1,24 @@
 import os
 import pygame
 
-
-class Chevalier:
+class Character(object):
     def __init__(self):
         self.width = 50
         self.heigth = 50
+        self.speed = 5
+        self.hitbox = pygame.Rect(50, 550, self.width, self.heigth)
+
+class Chevalier(Character):
+    def __init__(self):
+        super().__init__()
         self.sprite_import = pygame.image.load(os.path.join("Assets", "chevalier.png"))
         self.sprite = pygame.transform.scale(
             self.sprite_import, (self.width, self.heigth)
         )
-        self.hitbox = pygame.Rect(50, 550, self.width, self.heigth)
-        self.speed = 5
+        
+        
+
+class Magicien(Character):
+    def __init__(self):
+        pass
+        

@@ -1,2 +1,2 @@
 from .controls import *
-from .chevalier import *
+from .characters import *
