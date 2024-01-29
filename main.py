@@ -1,5 +1,4 @@
 import pygame
-import os
 from PlayerManager import *
 from ScreenManager import *
 
@@ -21,13 +20,10 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        player_movement(
-            chevalier.hitbox, chevalier.speed, chevalier.heigth, chevalier.width
-        )  # contrôles du joueur
-        
+        player_movement(chevalier.hitbox, chevalier.speed, chevalier.heigth, chevalier.width)  # contrôles du joueur
         draw_world()
-        draw_knight(chevalier.hitbox, chevalier.sprite)  # fenêtre de jeu
-
+        draw_characters(chevalier.hitbox, chevalier.sprite)  
+        
     pygame.quit()
 
 
