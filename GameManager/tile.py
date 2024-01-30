@@ -11,11 +11,8 @@ class Tile(object):
             self.sprite = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","rocher.png")),(50, 50)) #X = rocher
             self.hitbox = pygame.Rect(self.x*50,self.y*50,50,50)
         elif tile_type =='.':
-            self.sprite = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","herbe.png")),(50, 50)) #. = herbe
-            self.hitbox = pygame.Rect(self.x*50,self.y*50,0,0)
+            self.sprite = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","herbe.png")),(0, 0)) #. = rien
+            self.hitbox = pygame.Rect(0,0,0,0)
         elif tile_type == 'a':
             self.sprite = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","arbre.png")),(100, 100)) #. = herbe
             self.hitbox = pygame.Rect(self.x*50,self.y*50,100,100)
-        else:
-            self.sprite = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","herbe.png")),(0, 0)) #. = herbe
-            self.hitbox = pygame.Rect(self.x*50,self.y*50,0,0)

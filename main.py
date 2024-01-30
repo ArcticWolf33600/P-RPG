@@ -19,7 +19,6 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
         
         draw_world() # affiche le monde
         draw_character(chevalier) # affiche le personnage chevalier
