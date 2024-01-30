@@ -10,7 +10,7 @@ WORLD1 = [ #configuration du niveau
     ['X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X'],
     ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X'],
     ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X'],
-    ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X'],
+    ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','a','.','.','.','X'],
     ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X'],
     ['X','.','.','.','.','.','X','.','.','.','.','.','.','.','.','.','.','.','.','X'],
     ['X','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X'],
@@ -21,26 +21,15 @@ WORLD1 = [ #configuration du niveau
     ['X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X','X']
 ]
 
-WORLD_OBJECTS = [ #contient les tuiles sous forme d'objets Tile
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-]
+
+WORLD_OBJECTS = []
 
 def choose_world(world):
     for row in range(len(world)):
         for col in range(len(world[row])):
             tuile_type = world[row][col]
             tuile_objet = Tile(row,col,tuile_type)
-            WORLD_OBJECTS[row].append(tuile_objet)
+            WORLD_OBJECTS.append(tuile_objet)
+
 
 choose_world(WORLD1)
