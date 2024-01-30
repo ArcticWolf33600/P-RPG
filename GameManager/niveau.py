@@ -1,5 +1,3 @@
-import pygame
-import os
 from .tile import * 
 
 
@@ -22,9 +20,9 @@ WORLD1 = [ #configuration du niveau
 ]
 
 
-WORLD_OBJECTS = []
+WORLD_OBJECTS = [] # récupération des objets tiles ==> sont les assets
 
-def choose_world(world):
+def choose_world(world): # permet de run un monde
     for row in range(len(world)):
         for col in range(len(world[row])):
             tuile_type = world[row][col]
@@ -32,4 +30,4 @@ def choose_world(world):
             WORLD_OBJECTS.append(tuile_objet)
 
 
-choose_world(WORLD1)
+choose_world(WORLD1) # run le monde 1

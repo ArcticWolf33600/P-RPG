@@ -5,7 +5,7 @@ window_width = 1000
 
 
 
-def player_movements(character):
+def player_movements(character): # gère les déplacements du personnage
     keys_pressed = pygame.key.get_pressed()
     player_sprites = {
         "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),
@@ -23,7 +23,7 @@ def player_movements(character):
         character.hitbox.x += character.speed
         character.sprite = player_sprites["droite"]
 
-def collide(character):
+def collide(character): # détermine si le personnage rentre en collision avec un objet
     for elem in WORLD_OBJECTS:
         if character.hitbox.colliderect(elem.hitbox):
             return True

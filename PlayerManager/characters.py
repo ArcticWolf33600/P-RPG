@@ -1,7 +1,7 @@
 import os
 import pygame
 
-class Character(object):
+class Character(object): # classe parente de tous les types de personnages
     def __init__(self):
         self.width = 50
         self.heigth = 50
