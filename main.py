@@ -1,6 +1,6 @@
 import pygame
 from PlayerManager import *
-from ScreenManager import *
+from GameManager import *
 
 # pygame setup
 pygame.init()
@@ -20,10 +20,11 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-        player_movement(chevalier.hitbox, chevalier.speed, chevalier.heigth, chevalier.width)  # contrôles du joueur
-        draw_world()
-        draw_characters(chevalier.hitbox, chevalier.sprite)  
         
+        draw_world() # affiche le monde
+        draw_character(chevalier) # affiche le personnage chevalier
+        player_movements(chevalier)  # contrôles du joueur
+        pygame.display.flip()
     pygame.quit()
 
 
