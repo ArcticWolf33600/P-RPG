@@ -9,9 +9,12 @@ def draw_world(): #affiche le monde
     for elem in WORLD_OBJECTS:
         if elem.type != '.':
             screen.blit(elem.sprite,(elem.hitbox.x,elem.hitbox.y)) #affiche l'élément de premier plan du niveau à la case donnée 
-            rect_Surface = pygame.Surface((50,50)) #debuggage hitbox
-            rect_Surface.fill((255,0,0))
-            screen.blit(rect_Surface,elem.hitbox)
+            # ======= debuggage hitbox =======
+            # rect_Surface = pygame.Surface((50,50)) 
+            # rect_Surface.fill((255,0,0))
+            # screen.blit(rect_Surface,elem.hitbox)
+            # ================================
+
 def draw_character(character): # affiche le personnage
     screen.blit(character.sprite, (character.hitbox.x, character.hitbox.y))  # elements après
     
