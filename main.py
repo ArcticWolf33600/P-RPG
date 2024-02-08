@@ -5,6 +5,7 @@ from GameManager import *
 # pygame setup
 pygame.init()
 pygame.display.set_caption("P-RPG")
+
 fps = 60
 
 chevalier = Chevalier()  # crée l'objet chevalier affiché à l'écran
