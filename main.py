@@ -29,9 +29,9 @@ def main():
         draw_character(player) # affiche le personnage chevalier
         player_movements(player)  # contrôles du joueur
         
-        for enemy in ENEMIES:
-            draw_character(enemy)
-            enemy_move_to_player(enemy,player)
+        # for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
+        #     draw_character(enemy)
+        #     enemy_move_to_player(enemy,player)
         
         pygame.display.flip()
     pygame.quit()
