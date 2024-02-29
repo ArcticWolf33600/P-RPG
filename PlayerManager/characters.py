@@ -11,11 +11,16 @@ class Character(object): # classe parente de tous les types de personnages
 class Chevalier(Character):
     def __init__(self):
         super().__init__()
+        self.force = 10
+        self.portee = 1
         self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
 
-class Magicien(Character):
+class Mage(Character):
     def __init__(self):
         super().__init__()
-        pass
+        self.force = 5
+        self.portee = 5
+        self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "mage.png")).convert_alpha()
+        self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
 

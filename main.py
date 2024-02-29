@@ -19,21 +19,27 @@ def main():
     clock = pygame.time.Clock()
     running = True
     WORLD = "WORLD_INIT"
+    MENU = True
     while running:
         clock.tick(fps)  # limite le nombre de fps
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
         
-        WORLD = draw_world(player,WORLD) # affiche le monde
-        
-        draw_character(player) # affiche le personnage chevalier
-        player_movements(player)  # contrôles du joueur
-        
-        # for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
-        #     draw_character(enemy)
-        #     enemy_move_to_player(enemy,player)
-        
+        if MENU == False:
+            WORLD = draw_world(player,WORLD) # affiche le monde
+            
+            draw_character(player) # affiche le personnage chevalier
+            player_movements(player)  # contrôles du joueur
+            
+            # for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
+            #     draw_character(enemy)
+            #     enemy_move_to_player(enemy,player)
+        else:
+            res = menu_principal() #A RESOUDRE
+            player = res[0]
+            MENU = res[1]
+            
         pygame.display.flip()
     pygame.quit()
 
