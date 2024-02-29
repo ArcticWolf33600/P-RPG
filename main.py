@@ -18,14 +18,15 @@ ENEMIES = [skeleton,gobelin]
 def main():
     clock = pygame.time.Clock()
     running = True
-
+    WORLD = "WORLD_INIT"
     while running:
         clock.tick(fps)  # limite le nombre de fps
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
         
-        draw_world() # affiche le monde
+        WORLD = draw_world(player,WORLD) # affiche le monde
+        
         draw_character(player) # affiche le personnage chevalier
         player_movements(player)  # contrôles du joueur
         
