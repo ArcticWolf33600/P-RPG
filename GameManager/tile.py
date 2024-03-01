@@ -9,27 +9,27 @@ class Tile(object): # objet tuile : prend la forme du sprite selon son type sais
         
         match tile_type:
             case 'X':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","rocher.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","rock.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
             case 'a':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","arbre.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","tree.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(200, 200)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,200,200)
             case 'rp':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","rocher_pointu.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","sharp_rock.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 150)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,50,150)
             case 'fo':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","fleur_orange.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","orange_flower.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
             case 'fb':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","fleurs_blanches.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","white_flower.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
             case _:
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","herbe.png"))
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","grass.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(0, 0)) # . = rien
                 self.hitbox = pygame.Rect(0,0,0,0)
 

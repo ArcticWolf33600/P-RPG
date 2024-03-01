@@ -1,10 +1,10 @@
 import pygame
 import os
-from .niveau import *
+from .levels import *
 from .screen_maker import *
 from PlayerManager.characters import *
 
-def menu_principal(): #menu affiché au démarrage du jeu
+def main_menu(): #menu affiché au démarrage du jeu
     pygame.font.init() 
         
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
@@ -17,15 +17,15 @@ def menu_principal(): #menu affiché au démarrage du jeu
     text_surface = my_font.render('Mage : appuyez sur "d"', False, (255, 255, 0))
     screen.blit(text_surface, (600,420))
             
-    chevalier = pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")).convert_alpha()
+    chevalier = pygame.image.load(os.path.join("Assets","Characters", "knight.png")).convert_alpha()
     chevalier = pygame.transform.scale(chevalier, (200, 200))
     screen.blit(chevalier, (200,120))  
             
-    mage = pygame.image.load(os.path.join("Assets","Characters", "mage.png")).convert_alpha()
+    mage = pygame.image.load(os.path.join("Assets","Characters", "wizard.png")).convert_alpha()
     mage = pygame.transform.scale(mage, (200, 200))
     screen.blit(mage, (600,120))
             
-    fleche = pygame.image.load(os.path.join("Assets","fleche.png")).convert_alpha()
+    fleche = pygame.image.load(os.path.join("Assets","arrow.png")).convert_alpha()
     fleche = pygame.transform.scale(fleche, (100, 100))
     fleche = pygame.transform.rotate(fleche,90)
             

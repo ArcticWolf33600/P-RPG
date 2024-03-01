@@ -2,7 +2,7 @@ from GameManager import *
 from math import *
 
 
-def enemy_move_to_player(enemy,player):
+def enemy_moves_to_player(enemy,player):
     if not (abs(enemy.hitbox.x - player.hitbox.x) > 60 and abs(enemy.hitbox.y - player.hitbox.y) > 60 and not collide_enemy(enemy)): # l'ennemi est proche du joueur et se rapproche de lui
         if enemy.hitbox.x > player.hitbox.x and not collide_enemy(enemy): enemy.hitbox.x -= enemy.speed
         if(collide_enemy(enemy)): enemy.hitbox.x += 5

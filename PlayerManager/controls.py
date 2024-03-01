@@ -4,15 +4,15 @@ from GameManager import *
 def player_movements(character): # gère les déplacements du personnage
     keys_pressed = pygame.key.get_pressed()
     
-    if character.classe == "Chevalier":
+    if character.classe == "Knight":
         player_sprites = {
-            "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),
-            "gauche" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),True,False)
+            "right" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "knight.png")), (character.width, character.heigth)),
+            "left" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "knight.png")), (character.width, character.heigth)),True,False)
         }
     else:
         player_sprites = {
-            "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "mage.png")), (character.width, character.heigth)),
-            "gauche" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "mage.png")), (character.width, character.heigth)),True,False)
+            "right" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "wizard.png")), (character.width, character.heigth)),
+            "left" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "wizard.png")), (character.width, character.heigth)),True,False)
         }
 
     if keys_pressed[pygame.K_z] and not collide_player(character):  # haut
@@ -22,7 +22,7 @@ def player_movements(character): # gère les déplacements du personnage
         
     if keys_pressed[pygame.K_q] and not collide_player(character):  # gauche
         character.hitbox.x -= character.speed
-        character.sprite = player_sprites["gauche"]
+        character.sprite = player_sprites["left"]
     elif (keys_pressed[pygame.K_q] and collide_player(character)):
         character.hitbox.x +=10
 
@@ -33,7 +33,7 @@ def player_movements(character): # gère les déplacements du personnage
 
     if (keys_pressed[pygame.K_d] and not collide_player(character)):  # droite
         character.hitbox.x += character.speed
-        character.sprite = player_sprites["droite"]
+        character.sprite = player_sprites["right"]
     elif (keys_pressed[pygame.K_d] and collide_player(character)):
         character.hitbox.x -=10
 

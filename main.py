@@ -10,10 +10,6 @@ pygame.display.set_caption("P-RPG")
 
 fps = 60
 
-
-
-
-
 def main():
     clock = pygame.time.Clock()
     running = True
@@ -27,14 +23,14 @@ def main():
                 running = False
         
         if MENU == True: #Menu de sélection du personnage à jouer
-            menu_principal()
+            main_menu()
             
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[pygame.K_q]:
-                choix = Chevalier()
+                choix = Knight()
             
             elif keys_pressed[pygame.K_d]:
-                choix = Mage()
+                choix = Wizard()
                 
             elif keys_pressed[pygame.K_SPACE]:
                 player = choix
@@ -49,7 +45,7 @@ def main():
             
             for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
                 draw_character(enemy)
-                enemy_move_to_player(enemy,player)
+                enemy_moves_to_player(enemy,player)
         
         pygame.display.flip()
     pygame.quit()

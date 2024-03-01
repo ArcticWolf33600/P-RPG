@@ -8,21 +8,21 @@ class Character(object): # classe parente de tous les types de personnages
         self.speed = 5
         self.hitbox = pygame.Rect(350, 350, self.width, self.heigth)
 
-class Chevalier(Character):
+class Knight(Character):
     def __init__(self):
         super().__init__()
-        self.force = 10
-        self.portee = 1
-        self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")).convert_alpha()
+        self.strength = 10
+        self.range = 1
+        self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "knight.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
-        self.classe = "Chevalier"
+        self.classe = "Knight"
 
-class Mage(Character):
+class Wizard(Character):
     def __init__(self):
         super().__init__()
-        self.force = 5
-        self.portee = 5
-        self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "mage.png")).convert_alpha()
+        self.strength = 5
+        self.range = 5
+        self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "wizard.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
-        self.classe = "Mage"
+        self.classe = "Wizard"
 

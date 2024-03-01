@@ -1,20 +1,20 @@
 import pygame
-from .niveau import *
+from .levels import *
 from .tile import *
 
 screen = pygame.display.set_mode((window_width, window_heigth)) # crée l'écran
 
 def draw_world(player,WORLD): #affiche le monde 
-    background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","background_grille.png")),(window_width, window_heigth)) # background
+    background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
     
     if player.hitbox.y < 0 and WORLD == "WORLD_INIT":
-        WORLD = "JARDIN"    
-        choose_world(WORLD_JARDIN)
+        WORLD = "GARDEN"    
+        choose_world(WORLD_GARDEN)
         player.hitbox.x = window_width/2
         player.hitbox.y = window_heigth-60    
     
-    elif player.hitbox.y > window_heigth and WORLD == "JARDIN":
+    elif player.hitbox.y > window_heigth and WORLD == "GARDEN":
         WORLD = "WORLD_INIT"
         choose_world(WORLD1)
         player.hitbox.x = window_width/2
