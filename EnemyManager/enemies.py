@@ -21,3 +21,8 @@ class Gobelin(Enemy):
         self.sprite_import = pygame.image.load(os.path.join("Assets","Enemies", "Gobelin.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
         self.speed = 3
+
+
+skeleton = Skeleton(50,50)
+gobelin = Gobelin(200,200)
+ENEMIES = [skeleton,gobelin]
