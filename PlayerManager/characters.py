@@ -15,6 +15,7 @@ class Chevalier(Character):
         self.portee = 1
         self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
+        self.classe = "Chevalier"
 
 class Mage(Character):
     def __init__(self):
@@ -23,4 +24,5 @@ class Mage(Character):
         self.portee = 5
         self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "mage.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
+        self.classe = "Mage"
 

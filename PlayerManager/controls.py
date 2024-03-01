@@ -3,10 +3,17 @@ from GameManager import *
 
 def player_movements(character): # gère les déplacements du personnage
     keys_pressed = pygame.key.get_pressed()
-    player_sprites = {
-        "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),
-        "gauche" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),True,False)
-    }
+    
+    if character.classe == "Chevalier":
+        player_sprites = {
+            "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),
+            "gauche" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "chevalier.png")), (character.width, character.heigth)),True,False)
+        }
+    else:
+        player_sprites = {
+            "droite" : pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "mage.png")), (character.width, character.heigth)),
+            "gauche" : pygame.transform.flip(pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", "mage.png")), (character.width, character.heigth)),True,False)
+        }
 
     if keys_pressed[pygame.K_z] and not collide_player(character):  # haut
         character.hitbox.y -= character.speed
