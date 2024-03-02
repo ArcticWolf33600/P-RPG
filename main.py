@@ -11,6 +11,9 @@ pygame.display.set_caption("P-RPG")
 fps = 60
 
 def main():
+    main_music = os.path.join("Assets","SFX","main_music.mp3")
+    main_music = pygame.mixer.Sound(main_music)
+    pygame.mixer.Channel(0).play(main_music,loops=-1)
     clock = pygame.time.Clock()
     running = True
     WORLD = "WORLD_INIT"

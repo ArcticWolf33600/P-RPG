@@ -40,6 +40,9 @@ def player_movements(character): # gère les déplacements du personnage
 def collide_player(character): # détermine si le personnage rentre en collision avec un objet
     for elem in WORLD_OBJECTS:
         if character.hitbox.colliderect(elem.hitbox):
+            collide_sfx = os.path.join("Assets","SFX","collision.mp3")
+            collide_sfx = pygame.mixer.Sound(collide_sfx)
+            pygame.mixer.Channel(1).play(collide_sfx,loops=0)
             return True
     return False
         

@@ -5,7 +5,7 @@ from .tile import *
 screen = pygame.display.set_mode((window_width, window_heigth)) # crée l'écran
 
 def draw_world(player,WORLD): #affiche le monde 
-    background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","background_grid.png")),(window_width, window_heigth)) # background
+    background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
     
     if player.hitbox.y < 0 and WORLD == "WORLD_INIT":

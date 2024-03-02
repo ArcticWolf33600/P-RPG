@@ -6,7 +6,12 @@ from PlayerManager.characters import *
 
 def main_menu(): #menu affiché au démarrage du jeu
     pygame.font.init() 
-        
+    
+    PRPG = pygame.image.load(os.path.join("Assets","PRPG.png")).convert_alpha()
+    PRPG = pygame.transform.scale(PRPG, (window_width, window_heigth))
+    PRPG.set_alpha(1)
+    screen.blit(PRPG, (0,0))
+    
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
     text_surface = my_font.render('Quel personnage souhaitez-vous incarner ?', False, (255, 255, 0))
     screen.blit(text_surface, (window_width/5.5,20))
