@@ -45,6 +45,8 @@ def main():
             
             draw_character(player) # affiche le personnage chevalier
             player_movements(player)  # contrôles du joueur
+            player_attack_sound()
+            player_attack(player)
             
             for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
                 draw_character(enemy)
