@@ -46,35 +46,35 @@ def player_attack_sound():
         pygame.mixer.Channel(2).play(attack,loops=0)
     
 def player_attack(character):
-    attack_sprites = {
-        "Knight" : {
-            "right" : pygame.image.load(os.path.join("Assets","Characters", "slash.png")),
-            "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),True,False),
-            "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),90),
-            "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),-90)
-        },
-        "Wizard" : {
+    if character.classe == "Knight":
+        attack_sprites = {
             "right" : pygame.image.load(os.path.join("Assets","Characters", "slash.png")),
             "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),True,False),
             "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),90),
             "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),-90)
         }
-    }
+    else : 
+        attack_sprites = {
+            "right" : pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),
+            "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),True,False),
+            "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),90),
+            "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),-90)
+        }
     
     keys_pressed = pygame.key.get_pressed()
     
     if keys_pressed [pygame.K_RIGHT]:
-        attack = attack_sprites[character.classe]["right"]
-        screen.blit(attack, (character.hitbox.x+20, character.hitbox.y))
+        attack = attack_sprites["right"]
+        screen.blit(attack, (character.hitbox.x+20+character.range, character.hitbox.y))
     if keys_pressed [pygame.K_LEFT]:
-        attack = attack_sprites[character.classe]["left"]
-        screen.blit(attack, (character.hitbox.x-60, character.hitbox.y))
+        attack = attack_sprites["left"]
+        screen.blit(attack, (character.hitbox.x-60-character.range, character.hitbox.y))
     if keys_pressed [pygame.K_UP]:
-        attack = attack_sprites[character.classe]["up"]
-        screen.blit(attack, (character.hitbox.x, character.hitbox.y-60))
+        attack = attack_sprites["up"]
+        screen.blit(attack, (character.hitbox.x, character.hitbox.y-60-character.range))
     if keys_pressed [pygame.K_DOWN]:
-        attack = attack_sprites[character.classe]["down"]
-        screen.blit(attack, (character.hitbox.x, character.hitbox.y+20))
+        attack = attack_sprites["down"]
+        screen.blit(attack, (character.hitbox.x, character.hitbox.y+20+character.range))
         
     
     
