@@ -10,6 +10,7 @@ Installer le langage Python : https://www.python.org/downloads/
 Installer Pygame (dans une console):
 * Sur Window : py -m pip install -U pygame --user
 * Sur Mac : python3 -m pip install -U pygame --user
+* Sur Linux : sudo apt-get install python3-pygame
 
 Cloner le repos git du projet (dans une console): https://github.com/ArcticWolf33600/P-RPG.git
 
