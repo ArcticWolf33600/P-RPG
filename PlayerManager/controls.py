@@ -62,24 +62,25 @@ def player_attack(character):
         }
     
     keys_pressed = pygame.key.get_pressed()
-    
+    ATTACK_HITBOX = pygame.Rect(0, 0, 0, 0)
     if keys_pressed [pygame.K_RIGHT]:
         attack = attack_sprites["right"]
-        pygame.Rect(30+character.hitbox.x+20+character.range, character.hitbox.y, 60, 60)
+        ATTACK_HITBOX = pygame.Rect(30+character.hitbox.x+20+character.range, character.hitbox.y, 60, 60)
         screen.blit(attack, (character.hitbox.x+20+character.range, character.hitbox.y))
     if keys_pressed [pygame.K_LEFT]:
         attack = attack_sprites["left"]
-        pygame.Rect(character.hitbox.x-60-character.range, character.hitbox.y, 60, 60)
+        ATTACK_HITBOX = pygame.Rect(character.hitbox.x-60-character.range, character.hitbox.y, 60, 60)
         screen.blit(attack, (character.hitbox.x-60-character.range, character.hitbox.y))
     if keys_pressed [pygame.K_UP]:
         attack = attack_sprites["up"]
-        pygame.Rect(character.hitbox.x, character.hitbox.y-60-character.range, 60, 60)
+        ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y-60-character.range, 60, 60)
         screen.blit(attack, (character.hitbox.x, character.hitbox.y-60-character.range))        
     if keys_pressed [pygame.K_DOWN]:
         attack = attack_sprites["down"]
-        pygame.Rect(character.hitbox.x, character.hitbox.y+20+character.range+30, 60, 60)
+        ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y+20+character.range+30, 60, 60)
         screen.blit(attack, (character.hitbox.x, character.hitbox.y+20+character.range))
-        
+    
+    return ATTACK_HITBOX
     
 def collide_player(character): # détermine si le personnage rentre en collision avec un objet
     for elem in WORLD_OBJECTS:
