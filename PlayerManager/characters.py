@@ -16,6 +16,7 @@ class Knight(Character):
         self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "knight.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
         self.classe = "Knight"
+        self.health = 10
 
 class Wizard(Character):
     def __init__(self):
@@ -25,4 +26,5 @@ class Wizard(Character):
         self.sprite_import = pygame.image.load(os.path.join("Assets","Characters", "wizard.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
         self.classe = "Wizard"
+        self.health = 8
 

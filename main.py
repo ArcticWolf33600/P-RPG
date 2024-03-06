@@ -47,7 +47,7 @@ def main():
             player_movements(player)  # contrôles du joueur
             player_attack_sound()
             attack = player_attack(player)
-            
+            HUD(player)
             for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
                 draw_character(enemy)
                 enemy_moves_to_player(enemy,player,attack)

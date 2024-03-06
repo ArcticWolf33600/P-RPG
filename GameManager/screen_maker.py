@@ -34,3 +34,8 @@ def draw_world(player,WORLD): #affiche le monde
 def draw_character(character): # affiche le personnage
     screen.blit(character.sprite, (character.hitbox.x, character.hitbox.y))  # elements après
     
+def HUD(character):
+    heart = pygame.image.load(os.path.join("Assets","Characters", "heart.png")).convert_alpha()
+    heart = pygame.transform.scale(heart, (30, 30))
+    for k in range(character.health):
+        screen.blit(heart,(10 + k*30,20))
