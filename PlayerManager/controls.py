@@ -90,4 +90,8 @@ def collide_player(character): # détermine si le personnage rentre en collision
             pygame.mixer.Channel(1).play(collide_sfx,loops=0)
             return True
     return False
-        
+
+def check_attack_ennemy_to_player(enemy,player):
+    if enemy.hitbox.colliderect(player.hitbox):
+        player.health -= 1
+        player.hitbox.x += 20

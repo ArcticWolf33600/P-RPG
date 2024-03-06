@@ -51,8 +51,10 @@ def main():
             for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
                 draw_character(enemy)
                 enemy_moves_to_player(enemy,player,attack)
+                check_attack_ennemy_to_player(enemy,player)
                 if enemy.health<0:
                     ENEMIES.pop(ENEMIES.index(enemy))
+            
                     
         
         pygame.display.flip()
