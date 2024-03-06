@@ -14,6 +14,10 @@ def enemy_moves_to_player(enemy,player,attack):
         
         if collide_attack(enemy,attack):
             enemy.hitbox.x -= 20
+            enemy.health -= 0.5
+            enemy_hurt_sound = os.path.join("Assets","SFX","enemy_hurt.mp3")
+            enemy_hurt_sound = pygame.mixer.Sound(enemy_hurt_sound)
+            pygame.mixer.Channel(3).play(enemy_hurt_sound,loops=0)
 
             
 def collide_attack(character,attack):

@@ -14,6 +14,7 @@ class Skeleton(Enemy):
         self.sprite_import = pygame.image.load(os.path.join("Assets","Enemies", "Skeleton.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
         self.speed = 2
+        self.health = 3
         
 class Gobelin(Enemy):
     def __init__(self,posx,posy):
@@ -21,6 +22,7 @@ class Gobelin(Enemy):
         self.sprite_import = pygame.image.load(os.path.join("Assets","Enemies", "Gobelin.png")).convert_alpha()
         self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
         self.speed = 3
+        self.health = 6
 
 
 skeleton = Skeleton(50,50)
