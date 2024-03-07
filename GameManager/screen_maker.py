@@ -8,17 +8,31 @@ def draw_world(player,WORLD): #affiche le monde
     background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
     
-    if player.hitbox.y < 0 and WORLD == "WORLD_INIT":
-        WORLD = "GARDEN"    
-        choose_world(WORLD_GARDEN)
+    if player.hitbox.y < 0 and WORLD == "MIDDLE": #milieu vers le nord
+        WORLD = "N"    
+        choose_world(WORLD_N)
         player.hitbox.x = window_width/2
         player.hitbox.y = window_heigth-60    
     
-    elif player.hitbox.y > window_heigth and WORLD == "GARDEN":
-        WORLD = "WORLD_INIT"
-        choose_world(WORLD1)
+    elif player.hitbox.y > window_heigth and WORLD == "N": #nord vers le milieu
+        WORLD = "MIDDLE"
+        choose_world(WORLD_MIDDLE)
         player.hitbox.x = window_width/2
         player.hitbox.y = 0
+    
+    elif player.hitbox.y > window_heigth and WORLD == "MIDDLE": #milieu vers le sud
+        WORLD = "S"
+        choose_world(WORLD_S)
+        player.hitbox.x = window_width/2
+        player.hitbox.y = 0
+    
+    elif player.hitbox.y < 0 and WORLD == "S": #sud vers milieu
+        WORLD = "MIDDLE"
+        choose_world(WORLD_MIDDLE)
+        player.hitbox.x = window_width/2
+        player.hitbox.y = window_heigth-60  
+        
+        
         
     for elem in WORLD_OBJECTS:
         if elem.type != '.':
