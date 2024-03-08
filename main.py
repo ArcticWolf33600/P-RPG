@@ -16,7 +16,7 @@ def main():
     pygame.mixer.Channel(0).play(main_music,loops=-1)
     clock = pygame.time.Clock()
     running = True
-    WORLD = "MIDDLE"
+    WORLD = "SW"
     MENU = True
 
     while running:

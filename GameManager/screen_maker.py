@@ -8,30 +8,81 @@ def draw_world(player,WORLD): #affiche le monde
     background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
     
-    if player.hitbox.y < 0 and WORLD == "MIDDLE": #milieu vers le nord
-        WORLD = "N"    
-        choose_world(WORLD_N)
-        player.hitbox.x = window_width/2
-        player.hitbox.y = window_heigth-60    
-    
-    elif player.hitbox.y > window_heigth and WORLD == "N": #nord vers le milieu
-        WORLD = "MIDDLE"
-        choose_world(WORLD_MIDDLE)
-        player.hitbox.x = window_width/2
-        player.hitbox.y = 0
-    
-    elif player.hitbox.y > window_heigth and WORLD == "MIDDLE": #milieu vers le sud
-        WORLD = "S"
-        choose_world(WORLD_S)
-        player.hitbox.x = window_width/2
-        player.hitbox.y = 0
-    
-    elif player.hitbox.y < 0 and WORLD == "S": #sud vers milieu
-        WORLD = "MIDDLE"
-        choose_world(WORLD_MIDDLE)
-        player.hitbox.x = window_width/2
-        player.hitbox.y = window_heigth-60  
+    # if WORLD == "MIDDLE":
+    #     if player.hitbox.y < 0: #milieu vers le nord
+    #         WORLD = "N"    
+    #         choose_world(WORLD_N)
+    #         player.hitbox.x = window_width/2
+    #         player.hitbox.y = window_heigth-60
+
+    #     elif player.hitbox.y > window_heigth : #milieu vers le sud
+    #         WORLD = "S"
+    #         choose_world(WORLD_S)
+    #         player.hitbox.x = window_width/2
+    #         player.hitbox.y = 0
         
+    # elif WORLD == "N":
+    #     if player.hitbox.y > window_heigth: #nord vers le milieu
+    #         WORLD = "MIDDLE"
+    #         choose_world(WORLD_MIDDLE)
+    #         player.hitbox.x = window_width/2
+    #         player.hitbox.y = 0
+        
+    if WORLD == "SW":
+        if player.hitbox.x > window_width: #sud-est vers sud
+            WORLD = "S"
+            choose_world(WORLD_S)
+            player.hitbox.x = 60
+            player.hitbox.y = window_heigth/2  
+    
+    elif WORLD == "S":
+        if player.hitbox.x < 0: #sud vers sud-ouest
+            WORLD = "SW"
+            choose_world(WORLD_SW)
+            player.hitbox.x = window_width-60
+            player.hitbox.y = window_heigth/2
+        
+        if player.hitbox.x > window_width: #sud vers sud-est
+            WORLD = "SE"
+            choose_world(WORLD_SE)
+            player.hitbox.x = 60
+            player.hitbox.y = window_heigth/2
+    
+    elif WORLD == "SE":
+        if player.hitbox.x < 0: # sud-est vers sud
+            WORLD = "S"
+            choose_world(WORLD_S)
+            player.hitbox.x = window_width-60
+            player.hitbox.y = window_heigth/2
+        
+        if player.hitbox.y < 0: #sud-est vers est
+            WORLD = "E"
+            choose_world(WORLD_E)
+            player.hitbox.x = window_width/2
+            player.hitbox.y = window_heigth-60
+    
+    elif WORLD == "E":
+        if player.hitbox.y > window_heigth : # est vers sud-est
+            WORLD = "SE"
+            choose_world(WORLD_SE)
+            player.hitbox.x = window_width/2
+            player.hitbox.y = 0
+                
+        if player.hitbox.y < 0 : #est vers nord-est
+            WORLD = "NE"
+            choose_world(WORLD_NE)
+            player.hitbox.x = window_width/2
+            player.hitbox.y = window_heigth - 60
+    
+    elif  WORLD == "NE":
+        if player.hitbox.y > window_heigth: #nord-est vers est
+            WORLD = "E" 
+            choose_world(WORLD_E)
+            player.hitbox.x = window_width/2
+            player.hitbox.y = 0
+            
+        
+    
         
         
     for elem in WORLD_OBJECTS:
