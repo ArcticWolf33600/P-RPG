@@ -28,6 +28,14 @@ class Tile(object): # objet tuile : prend la forme du sprite selon son type sais
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","white_flower.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
+            case 'cc':
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_close.png"))
+                self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
+                self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
+            case 'co':
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_open.png"))
+                self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
+                self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
             case _:
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","grass.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(0, 0)) # . = rien
