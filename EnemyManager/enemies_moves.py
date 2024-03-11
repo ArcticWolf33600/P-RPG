@@ -1,5 +1,6 @@
 from GameManager import *
 from math import *
+from PlayerManager import *
 
 def enemy_moves_to_player(enemy,player,attack):
     if not (abs(enemy.hitbox.x - player.hitbox.x) > 60 and abs(enemy.hitbox.y - player.hitbox.y) > 60 and not collide_enemy(enemy)): # l'ennemi est proche du joueur et se rapproche de lui
@@ -29,3 +30,11 @@ def collide_enemy(character): # détermine si le personnage rentre en collision 
         if character.hitbox.colliderect(elem.hitbox):
             return True
     return False
+
+def enemy_management(ENEMIES, player,attack):
+    for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
+        draw_character(enemy)
+        enemy_moves_to_player(enemy,player,attack)
+        check_attack_ennemy_to_player(enemy,player)
+        if enemy.health<0:
+            ENEMIES.pop(ENEMIES.index(enemy))
