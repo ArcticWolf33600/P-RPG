@@ -55,7 +55,7 @@ def main():
             ENEMIES = enemies_management(WORLD)
             enemy_management(ENEMIES,player,attack) # gestion des ennmis
 
-            if player.health == 0:
+            if player.health == 0 or len(ENEMIES_NE) == 0:
                 MENU = "over"
         
         if MENU == "over": # gestion du game over
@@ -73,3 +73,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
+# reste à faire : 
+# - HUD : ajouter l'objet contenu + "space to open" pour les coffres
+# - régler le problème de changement de panneau quand tous les ennemis ne sont pas morts
