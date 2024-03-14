@@ -42,49 +42,54 @@ def player_movements(character):
     if (keys_pressed[pygame.K_SPACE]):
         openable(character)
 
-def player_attack_sound():
+def player_attack_sound(player):
     """effectue le son d'attaque"""
-    keys_pressed = pygame.key.get_pressed()
-    if keys_pressed[pygame.K_LEFT] or keys_pressed[pygame.K_RIGHT] or keys_pressed[pygame.K_UP] or keys_pressed[pygame.K_DOWN]: 
-        attack = os.path.join("Assets","SFX","attack.mp3")
-        attack = pygame.mixer.Sound(attack)
-        pygame.mixer.Channel(2).play(attack,loops=0)
+    if player.attack == True:
+        keys_pressed = pygame.key.get_pressed()
+        if keys_pressed[pygame.K_LEFT] or keys_pressed[pygame.K_RIGHT] or keys_pressed[pygame.K_UP] or keys_pressed[pygame.K_DOWN]: 
+            attack = os.path.join("Assets","SFX","attack.mp3")
+            attack = pygame.mixer.Sound(attack)
+            pygame.mixer.Channel(2).play(attack,loops=0)
     
 def player_attack(character):
     """crée une zone à l'endroit de l'attaque du joueur et anime l'attaque"""
-    if character.classe == "Knight":
-        attack_sprites = {
-            "right" : pygame.image.load(os.path.join("Assets","Characters", "slash.png")),
-            "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),True,False),
-            "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),90),
-            "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "slash.png")),-90)
-        }
-    else : 
-        attack_sprites = {
-            "right" : pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),
-            "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),True,False),
-            "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),90),
-            "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", "fireball.png")),-90)
-        }
-    
-    keys_pressed = pygame.key.get_pressed()
     ATTACK_HITBOX = pygame.Rect(0, 0, 0, 0)
-    if keys_pressed [pygame.K_RIGHT]:
-        attack = attack_sprites["right"]
-        ATTACK_HITBOX = pygame.Rect(30+character.hitbox.x+20+character.range, character.hitbox.y, 60, 60)
-        screen.blit(attack, (character.hitbox.x+20+character.range, character.hitbox.y))
-    if keys_pressed [pygame.K_LEFT]:
-        attack = attack_sprites["left"]
-        ATTACK_HITBOX = pygame.Rect(character.hitbox.x-60-character.range, character.hitbox.y, 60, 60)
-        screen.blit(attack, (character.hitbox.x-60-character.range, character.hitbox.y))
-    if keys_pressed [pygame.K_UP]:
-        attack = attack_sprites["up"]
-        ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y-60-character.range, 60, 60)
-        screen.blit(attack, (character.hitbox.x, character.hitbox.y-60-character.range))        
-    if keys_pressed [pygame.K_DOWN]:
-        attack = attack_sprites["down"]
-        ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y+20+character.range+30, 60, 60)
-        screen.blit(attack, (character.hitbox.x, character.hitbox.y+20+character.range))
+    if character.attack == True:
+        if character.classe == "Knight":
+            attack_type_string = character.attack_type + "_slash.png"
+            attack_sprites = {
+                "right" : pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),
+                "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),True,False),
+                "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),90),
+                "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),-90)
+            }
+        else : 
+            attack_type_string = character.attack_type + "_fireball.png"
+            attack_sprites = {
+                "right" : pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),
+                "left" : pygame.transform.flip(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),True,False),
+                "up" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),90),
+                "down" : pygame.transform.rotate(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),-90)
+            }
+        
+        keys_pressed = pygame.key.get_pressed()
+        
+        if keys_pressed [pygame.K_RIGHT]:
+            attack = attack_sprites["right"]
+            ATTACK_HITBOX = pygame.Rect(30+character.hitbox.x+20+character.range, character.hitbox.y, 60, 60)
+            screen.blit(attack, (character.hitbox.x+20+character.range, character.hitbox.y))
+        if keys_pressed [pygame.K_LEFT]:
+            attack = attack_sprites["left"]
+            ATTACK_HITBOX = pygame.Rect(character.hitbox.x-60-character.range, character.hitbox.y, 60, 60)
+            screen.blit(attack, (character.hitbox.x-60-character.range, character.hitbox.y))
+        if keys_pressed [pygame.K_UP]:
+            attack = attack_sprites["up"]
+            ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y-60-character.range, 60, 60)
+            screen.blit(attack, (character.hitbox.x, character.hitbox.y-60-character.range))        
+        if keys_pressed [pygame.K_DOWN]:
+            attack = attack_sprites["down"]
+            ATTACK_HITBOX = pygame.Rect(character.hitbox.x, character.hitbox.y+20+character.range+30, 60, 60)
+            screen.blit(attack, (character.hitbox.x, character.hitbox.y+20+character.range))
     
     return ATTACK_HITBOX
     
@@ -108,5 +113,12 @@ def openable(character):
     """détermine si on peut interagir avec l'objet"""
     for elem in WORLD_OBJECTS:
         if character.hitbox.colliderect(elem.hitbox) and elem.interactable == True :
+            if elem.loot == "unlock":
+                character.attack = True
+            elif elem.loot== "buff":
+                character.attack_type="strong"
+                character.strength += 5
+            elif elem.loot == "heal":
+                character.health = 10
             WORLD_OBJECTS.pop(WORLD_OBJECTS.index(elem))
             

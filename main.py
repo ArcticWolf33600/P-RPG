@@ -45,7 +45,8 @@ def main():
             
             draw_character(player) # affiche le personnage chevalier
             player_movements(player)  # contrôles du joueur
-            player_attack_sound()
+            
+            player_attack_sound(player)
             attack = player_attack(player)
             
             HUD(player)

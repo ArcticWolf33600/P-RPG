@@ -8,6 +8,7 @@ class Tile(object):
         self.y = posY
         self.type = tile_type
         self.interactable = False
+        self.loot = "None"
         
         match tile_type:
             case 'X':
@@ -30,15 +31,18 @@ class Tile(object):
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","white_flower.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
-            case 'cc':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_close.png"))
+            case 'cua':
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_unlock_attack.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
                 self.interactable = True
-            case 'co':
-                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_open.png"))
+                self.loot = "unlock"
+            case 'ch':
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_heal.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
+                self.interactable = True
+                self.loot = "heal"
             case _:
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","grass.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(0, 0)) # . = rien
