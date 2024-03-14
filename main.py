@@ -17,7 +17,7 @@ def main():
     clock = pygame.time.Clock()
     running = True
     WORLD = "SW"
-    MENU = True
+    MENU = "start"
 
     while running:
         clock.tick(fps)  # limite le nombre de fps
@@ -25,7 +25,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
         
-        if MENU == True: #Menu de sélection du personnage à jouer
+        if MENU == "start": #Menu de sélection du personnage à jouer
             main_menu()
             
             keys_pressed = pygame.key.get_pressed()
@@ -37,9 +37,9 @@ def main():
                 
             elif keys_pressed[pygame.K_SPACE]:
                 player = choix
-                MENU = False
+                MENU = "game"
             
-        if MENU == False: #Lancement du jeu
+        if MENU == "game": #Lancement du jeu
             
             WORLD = draw_world(player,WORLD) # affiche le monde
             
@@ -51,6 +51,26 @@ def main():
             HUD(player)
 
             enemy_management(ENEMIES,player,attack)
+
+            if player.health == 0:
+                MENU = "over"
+        
+        if MENU == "over":
+            game_over()
+
+            keys_pressed = pygame.key.get_pressed()
+            if keys_pressed[pygame.K_q]:
+                choix = "start"
+            
+            elif keys_pressed[pygame.K_d]:
+                choix = "quit"
+                
+            elif keys_pressed[pygame.K_SPACE]:
+                MENU = choix
+        
+        if MENU == "quit":
+            running = False
+                
 
         pygame.display.flip()
     pygame.quit()
