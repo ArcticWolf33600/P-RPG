@@ -46,17 +46,17 @@ def main():
             draw_character(player) # affiche le personnage chevalier
             player_movements(player)  # contrôles du joueur
             
-            player_attack_sound(player)
-            attack = player_attack(player)
+            player_attack_sound(player) # bruits d'attaque
+            attack = player_attack(player) # enregistre l'attaque du joueur
             
-            HUD(player)
+            HUD(player) #affiche l'interface
 
-            enemy_management(ENEMIES,player,attack)
+            enemy_management(ENEMIES,player,attack) # gestion des ennmis
 
             if player.health == 0:
                 MENU = "over"
         
-        if MENU == "over":
+        if MENU == "over": # gestion du game over
             game_over()
 
             keys_pressed = pygame.key.get_pressed()

@@ -25,7 +25,18 @@ class Gobelin(Enemy):
         self.speed = 3
         self.health = 6
 
-
+class Boss(object): 
+    """classe du boss"""
+    def __init__(self,posx,posy):
+        self.width = 200
+        self.heigth = 200
+        self.hitbox = pygame.Rect(posx, posy, self.width, self.heigth)
+        self.sprite_import = pygame.image.load(os.path.join("Assets","Enemies", "Boss.png")).convert_alpha()
+        self.sprite = pygame.transform.scale(self.sprite_import, (self.width, self.heigth))
+        self.speed = 2
+        self.health = 25
+        
 skeleton = Skeleton(50,50)
 gobelin = Gobelin(200,200)
-ENEMIES = [skeleton,gobelin]
+boss = Boss(450,50)
+ENEMIES = [skeleton,gobelin,boss]
