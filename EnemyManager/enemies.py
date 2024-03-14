@@ -1,7 +1,8 @@
 import pygame
 import os
 
-class Enemy(object): # classe parente de tous les types de personnages
+class Enemy(object): 
+    """classe parente de tous les types d'ennemis"""
     def __init__(self,posx,posy):
         self.width = 50
         self.heigth = 50

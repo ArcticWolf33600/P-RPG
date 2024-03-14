@@ -1,7 +1,8 @@
 import pygame
 import os
 
-class Tile(object): # objet tuile : prend la forme du sprite selon son type saisi 
+class Tile(object): 
+    """objet tuile : prend la forme du sprite selon son type saisi """
     def __init__(self,posX,posY,tile_type):
         self.x = posX
         self.y = posY

@@ -3,6 +3,7 @@ from math import *
 from PlayerManager import *
 
 def enemy_moves_to_player(enemy,player,attack):
+    """gère les déplacements des ennmis"""
     if not (abs(enemy.hitbox.x - player.hitbox.x) > 60 and abs(enemy.hitbox.y - player.hitbox.y) > 60 and not collide_enemy(enemy)): # l'ennemi est proche du joueur et se rapproche de lui
         if enemy.hitbox.x > player.hitbox.x and not collide_enemy(enemy): enemy.hitbox.x -= enemy.speed
         if(collide_enemy(enemy)): enemy.hitbox.x += 5
@@ -22,17 +23,21 @@ def enemy_moves_to_player(enemy,player,attack):
 
             
 def collide_attack(character,attack):
+    """gère les collisions avec la zone d'attaque du joueur"""
     if character.hitbox.colliderect(attack):
         return True
     return False
-def collide_enemy(character): # détermine si le personnage rentre en collision avec un objet
+
+def collide_enemy(character):
+    """détermine si le personnage rentre en collision avec un objet"""
     for elem in WORLD_OBJECTS:
         if character.hitbox.colliderect(elem.hitbox):
             return True
     return False
 
 def enemy_management(ENEMIES, player,attack):
-    for enemy in ENEMIES: # gestion des ennemis (affichage + déplacements)
+    """gestion des ennemis (affichage & déplacements)"""
+    for enemy in ENEMIES: 
         draw_character(enemy)
         enemy_moves_to_player(enemy,player,attack)
         check_attack_ennemy_to_player(enemy,player)

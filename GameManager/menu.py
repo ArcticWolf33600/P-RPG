@@ -4,7 +4,8 @@ from .levels import *
 from .screen_maker import *
 from PlayerManager.characters import *
 
-def main_menu(): #menu affiché au démarrage du jeu
+def main_menu():
+    """menu affiché au démarrage du jeu"""
     pygame.font.init() 
     screen.fill((0,0,0))
     PRPG = pygame.image.load(os.path.join("Assets","PRPG.png")).convert_alpha()
@@ -48,6 +49,7 @@ def main_menu(): #menu affiché au démarrage du jeu
         screen.blit(fleche, (650,320))
 
 def game_over():
+    """menu affiché lors du game over"""
     pygame.font.init() 
 
     screen.fill((0,0,0))

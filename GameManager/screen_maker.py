@@ -4,7 +4,8 @@ from .tile import *
 
 screen = pygame.display.set_mode((window_width, window_heigth)) # crée l'écran
 
-def draw_world(player,WORLD): #affiche le monde 
+def draw_world(player,WORLD): 
+    """affiche le monde""" 
     background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
         
@@ -61,10 +62,6 @@ def draw_world(player,WORLD): #affiche le monde
             player.hitbox.x = window_width/2
             player.hitbox.y = 0
             
-        
-    
-        
-        
     for elem in WORLD_OBJECTS:
         if elem.type != '.':
             screen.blit(elem.sprite,(elem.hitbox.x,elem.hitbox.y)) #affiche l'élément de premier plan du niveau à la case donnée 
@@ -76,10 +73,12 @@ def draw_world(player,WORLD): #affiche le monde
 
     return WORLD
 
-def draw_character(character): # affiche le personnage
+def draw_character(character):
+    """affiche le personnage"""
     screen.blit(character.sprite, (character.hitbox.x, character.hitbox.y))  # elements après
     
 def HUD(character):
+    """affiche le hud"""
     heart = pygame.image.load(os.path.join("Assets","Characters", "heart.png")).convert_alpha()
     heart = pygame.transform.scale(heart, (30, 30))
     for k in range(character.health):
