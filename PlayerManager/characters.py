@@ -6,7 +6,7 @@ class Character(object):
     def __init__(self):
         self.width = 50
         self.heigth = 50
-        self.speed = 5
+        self.speed = 10
         self.hitbox = pygame.Rect(350, 350, self.width, self.heigth)
         self.attack_type = "normal"
         self.health = 10

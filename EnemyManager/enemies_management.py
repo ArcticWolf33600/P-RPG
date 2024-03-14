@@ -1,5 +1,4 @@
 from EnemyManager import * 
-from GameManager import *
 
 ENEMIES_S = [Skeleton(50,50),Skeleton(100,100)]
 ENEMIES_SE = [Skeleton(360,60),Gobelin(300,300),Gobelin(350,350)]

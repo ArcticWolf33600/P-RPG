@@ -43,6 +43,12 @@ class Tile(object):
                 self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
                 self.interactable = True
                 self.loot = "heal"
+            case 'cna':
+                sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_unlock_attack.png"))
+                self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
+                self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
+                self.interactable = True
+                self.loot = "buff"
             case _:
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","grass.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(0, 0)) # . = rien

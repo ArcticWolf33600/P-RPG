@@ -1,14 +1,18 @@
 import pygame
 from .levels import *
 from .tile import *
+# from EnemyManager import *
 
 screen = pygame.display.set_mode((window_width, window_heigth)) # crée l'écran
 
-def draw_world(player,WORLD): 
+def draw_world(player,WORLD,ENEMIES_S,ENEMIES_SE): 
     """affiche le monde""" 
     background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
-        
+    if player.attack:
+        WORLD_SW = WORLD_SW_OPEN
+    if len(ENEMIES_S) == 0 and len(ENEMIES_SE)==0:
+        WORLD_E = WORLD_E_DEFEATED
     if WORLD == "SW":
         if player.hitbox.x > window_width: #sud-est vers sud
             WORLD = "S"

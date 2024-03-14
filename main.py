@@ -42,7 +42,7 @@ def main():
             
         if MENU == "game": #Lancement du jeu
             
-            WORLD = draw_world(player,WORLD) # affiche le monde
+            WORLD = draw_world(player,WORLD,ENEMIES_S,ENEMIES_SE) # affiche le monde
             
             draw_character(player) # affiche le personnage chevalier
             player_movements(player)  # contrôles du joueur
