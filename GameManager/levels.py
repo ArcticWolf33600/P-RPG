@@ -165,7 +165,8 @@ WORLD_NE = [
 
 WORLD_OBJECTS = [] # récupération des objets tiles ==> sont les assets
 
-def choose_world(world): # permet de run un monde
+def choose_world(world):
+    """permet de run un monde"""
     WORLD_OBJECTS.clear()
     for row in range(len(world)):
         for col in range(len(world[row])):

@@ -1,7 +1,8 @@
 import pygame
 from GameManager import *
 
-def player_movements(character): # gère les déplacements du personnage
+def player_movements(character):
+    """gère les déplacements du personnage"""
     
     player_sprites = {
         "Knight" : {
@@ -37,8 +38,12 @@ def player_movements(character): # gère les déplacements du personnage
         character.sprite = player_sprites[character.classe]["right"]
     elif (keys_pressed[pygame.K_d] and collide_player(character)):
         character.hitbox.x -=10
+    
+    if (keys_pressed[pygame.K_SPACE]):
+        openable(character)
 
 def player_attack_sound():
+    """effectue le son d'attaque"""
     keys_pressed = pygame.key.get_pressed()
     if keys_pressed[pygame.K_LEFT] or keys_pressed[pygame.K_RIGHT] or keys_pressed[pygame.K_UP] or keys_pressed[pygame.K_DOWN]: 
         attack = os.path.join("Assets","SFX","attack.mp3")
@@ -46,6 +51,7 @@ def player_attack_sound():
         pygame.mixer.Channel(2).play(attack,loops=0)
     
 def player_attack(character):
+    """crée une zone à l'endroit de l'attaque du joueur et anime l'attaque"""
     if character.classe == "Knight":
         attack_sprites = {
             "right" : pygame.image.load(os.path.join("Assets","Characters", "slash.png")),
@@ -82,7 +88,8 @@ def player_attack(character):
     
     return ATTACK_HITBOX
     
-def collide_player(character): # détermine si le personnage rentre en collision avec un objet
+def collide_player(character):
+    """détermine si le personnage rentre en collision avec un objet"""
     for elem in WORLD_OBJECTS:
         if character.hitbox.colliderect(elem.hitbox):
             collide_sfx = os.path.join("Assets","SFX","collision.mp3")
@@ -92,6 +99,14 @@ def collide_player(character): # détermine si le personnage rentre en collision
     return False
 
 def check_attack_ennemy_to_player(enemy,player):
+    """retire de la vie si le joueur entre en collision avec l'ennemi"""
     if enemy.hitbox.colliderect(player.hitbox):
         player.health -= 1
         player.hitbox.x += 20
+        
+def openable(character): 
+    """détermine si on peut interagir avec l'objet"""
+    for elem in WORLD_OBJECTS:
+        if character.hitbox.colliderect(elem.hitbox) and elem.interactable == True :
+            WORLD_OBJECTS.pop(WORLD_OBJECTS.index(elem))
+            

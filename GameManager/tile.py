@@ -6,6 +6,7 @@ class Tile(object): # objet tuile : prend la forme du sprite selon son type sais
         self.x = posX
         self.y = posY
         self.type = tile_type
+        self.interactable = False
         
         match tile_type:
             case 'X':
@@ -31,11 +32,12 @@ class Tile(object): # objet tuile : prend la forme du sprite selon son type sais
             case 'cc':
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_close.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
-                self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
+                self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
+                self.interactable = True
             case 'co':
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","chest_open.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(50, 50)) 
-                self.hitbox = pygame.Rect(self.y*50,self.x*50,0,0)
+                self.hitbox = pygame.Rect(self.y*50,self.x*50,50,50)
             case _:
                 sprite_import = pygame.image.load(os.path.join("Assets","Environment","grass.png"))
                 self.sprite = pygame.transform.scale(sprite_import,(0, 0)) # . = rien

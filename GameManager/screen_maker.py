@@ -7,26 +7,6 @@ screen = pygame.display.set_mode((window_width, window_heigth)) # crée l'écran
 def draw_world(player,WORLD): #affiche le monde 
     background = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Environment","background_grid.png")),(window_width, window_heigth)) # background
     screen.blit(background,(0,0))
-    
-    # if WORLD == "MIDDLE":
-    #     if player.hitbox.y < 0: #milieu vers le nord
-    #         WORLD = "N"    
-    #         choose_world(WORLD_N)
-    #         player.hitbox.x = window_width/2
-    #         player.hitbox.y = window_heigth-60
-
-    #     elif player.hitbox.y > window_heigth : #milieu vers le sud
-    #         WORLD = "S"
-    #         choose_world(WORLD_S)
-    #         player.hitbox.x = window_width/2
-    #         player.hitbox.y = 0
-        
-    # elif WORLD == "N":
-    #     if player.hitbox.y > window_heigth: #nord vers le milieu
-    #         WORLD = "MIDDLE"
-    #         choose_world(WORLD_MIDDLE)
-    #         player.hitbox.x = window_width/2
-    #         player.hitbox.y = 0
         
     if WORLD == "SW":
         if player.hitbox.x > window_width: #sud-est vers sud
