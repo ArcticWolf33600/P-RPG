@@ -60,17 +60,10 @@ def main():
 
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[pygame.K_q]:
-                choix = "start"
-            
+                MENU = "start"
+                
             elif keys_pressed[pygame.K_d]:
-                choix = "quit"
-                
-            elif keys_pressed[pygame.K_SPACE]:
-                MENU = choix
-        
-        if MENU == "quit":
-            running = False
-                
+                running = False
 
         pygame.display.flip()
     pygame.quit()
