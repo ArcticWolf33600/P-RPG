@@ -38,6 +38,7 @@ def main():
             elif keys_pressed[pygame.K_SPACE]:
                 player = choix
                 MENU = "game"
+                WORLD = "SW"
             
         if MENU == "game": #Lancement du jeu
             
@@ -51,6 +52,7 @@ def main():
             
             HUD(player) #affiche l'interface
 
+            ENEMIES = enemies_management(WORLD)
             enemy_management(ENEMIES,player,attack) # gestion des ennmis
 
             if player.health == 0:

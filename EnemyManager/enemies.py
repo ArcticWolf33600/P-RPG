@@ -36,7 +36,4 @@ class Boss(object):
         self.speed = 2
         self.health = 25
         
-skeleton = Skeleton(50,50)
-gobelin = Gobelin(200,200)
-boss = Boss(450,50)
-ENEMIES = [skeleton,gobelin,boss]
+
