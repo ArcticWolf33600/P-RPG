@@ -50,7 +50,7 @@ def main():
             player_attack_sound(player) # bruits d'attaque
             attack = player_attack(player) # enregistre l'attaque du joueur
             
-            HUD(player) #affiche l'interface
+            HUD(player,WORLD) #affiche l'interface
 
             ENEMIES = enemies_management(WORLD)
             enemy_management(ENEMIES,player,attack) # gestion des ennmis
@@ -73,7 +73,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-    
-# reste à faire : 
-# - HUD : ajouter l'objet contenu + "space to open" pour les coffres

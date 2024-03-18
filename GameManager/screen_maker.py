@@ -111,9 +111,27 @@ def draw_character(character):
     """affiche le personnage"""
     screen.blit(character.sprite, (character.hitbox.x, character.hitbox.y))  # elements après
     
-def HUD(character):
+def HUD(character,world):
     """affiche le hud"""
     heart = pygame.image.load(os.path.join("Assets","Characters", "heart.png")).convert_alpha()
     heart = pygame.transform.scale(heart, (30, 30))
     for k in range(character.health):
         screen.blit(heart,(10 + k*30,20))
+    
+    if world == "SW":
+        
+        pygame.font.init()
+        my_font = pygame.font.SysFont('Comic Sans MS', 20)
+        text_surface = my_font.render('Déplacements : Z,Q,S,D', False, (0, 0, 0))
+        screen.blit(text_surface, (60,100))
+        text_surface = my_font.render('Attaquer : flèches', False, (0, 0, 0))
+        screen.blit(text_surface, (800,100))
+        text_surface = my_font.render('Utiliser : Espace', False, (0, 0, 0))
+        screen.blit(text_surface, (400,360))
+
+    if character.attack == True:    
+        pygame.draw.rect(screen, (124,124,124), pygame.Rect(880, 450, 100, 100))
+        pygame.draw.rect(screen, (0,0,0), pygame.Rect(890, 460, 80, 80))
+        attack_type_string = character.attack_type + "_slash.png"
+        attack = pygame.transform.scale(pygame.image.load(os.path.join("Assets","Characters", attack_type_string)),(80,80))
+        screen.blit(attack, (890, 460))
