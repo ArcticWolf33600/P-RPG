@@ -27,7 +27,7 @@ def main():
         
         if MENU == "start": #Menu de sélection du personnage à jouer
             main_menu()
-            
+            WORLD = "SW"
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[pygame.K_q]:
                 choix = Knight()
@@ -64,6 +64,7 @@ def main():
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[pygame.K_q]:
                 MENU = "start"
+                WORLD = "SW"
                 
             elif keys_pressed[pygame.K_d]:
                 running = False
