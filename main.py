@@ -77,4 +77,3 @@ if __name__ == "__main__":
     
 # reste à faire : 
 # - HUD : ajouter l'objet contenu + "space to open" pour les coffres
-# - régler le problème de changement de panneau quand tous les ennemis ne sont pas morts
