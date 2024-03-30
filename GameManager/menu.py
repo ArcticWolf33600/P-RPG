@@ -58,10 +58,10 @@ def game_over():
     text_surface = my_font.render('GAME OVER', False, (255, 255, 0))
     screen.blit(text_surface, (window_width/2 - 100,60))
     
-    text_surface = my_font.render('Rejouer : appuyez sur "q"', False, (255, 255, 0))
+    text_surface = my_font.render('Rejouer : appuyez sur "r"', False, (255, 255, 0))
     screen.blit(text_surface, (100,420))
             
-    text_surface = my_font.render('Quitter : appuyez sur "d"', False, (255, 255, 0))
+    text_surface = my_font.render('Quitter : appuyez sur "echap"', False, (255, 255, 0))
     screen.blit(text_surface, (600,420))
     
     

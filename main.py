@@ -26,19 +26,20 @@ def main():
                 running = False
         
         if MENU == "start": #Menu de sélection du personnage à jouer
+            ENEMIES = enemies_management(WORLD)
             main_menu()
             WORLD = "SW"
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[pygame.K_q]:
-                choix = Knight()
+                player = Knight()
             
             elif keys_pressed[pygame.K_d]:
-                choix = Wizard()
+                player = Wizard()
                 
             elif keys_pressed[pygame.K_SPACE]:
-                player = choix
                 MENU = "game"
                 WORLD = "SW"
+                
             
         if MENU == "game": #Lancement du jeu
             
@@ -62,11 +63,12 @@ def main():
             game_over()
 
             keys_pressed = pygame.key.get_pressed()
-            if keys_pressed[pygame.K_q]:
+            if keys_pressed[pygame.r]:
                 MENU = "start"
                 WORLD = "SW"
                 
-            elif keys_pressed[pygame.K_d]:
+                
+            elif keys_pressed[pygame.K_ESCAPE]:
                 running = False
 
         pygame.display.flip()
